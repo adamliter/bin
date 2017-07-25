@@ -1,0 +1,8 @@
+#!/bin/sh
+# -*- coding: utf-8; fill-column: 72; mode: sh; -*-
+
+python3 -c 'import sys,csv; \
+c = csv.reader(sys.stdin, skipinitialspace=True); \
+[sys.stdout.write("^L".join(map(repr, row)) + "\n") for row in c];' \
+	< "$@" | \
+    column -s '^L' -t
